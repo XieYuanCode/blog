@@ -169,3 +169,23 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
 ```
+
+我们降级，主要的就是修改这个项目文件为新的组织方式
+
+尝试如下操作
+
+1. 项目右键->卸载项目
+2. 项目右键->编辑ClassLibraryProject.csproj
+3. 备份ClassLibraryProject.csproj
+4. 将ClassLibraryProject.csproj文件内容删除，并贴入一下代码
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks Condition="'$(LibraryFrameworks)'==''">net46;net40</TargetFrameworks>
+  </PropertyGroup>
+</Project>
+```
+5. 右键项目->重新加载项目
+
+此时，打开项目，你可以看到你的项目发生了如下变化
+
