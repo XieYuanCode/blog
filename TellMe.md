@@ -188,4 +188,6 @@
 5. 右键项目->重新加载项目
 
 此时，打开项目，你可以看到你的项目发生了如下变化
+![project-change](https://raw.githubusercontent.com/XieYuanCode/blog/master/Snipaste_2019-03-18_18-19-04.png)
+此时，项目已经是一个40、46共存的项目了
 
