@@ -86,7 +86,7 @@
 5. 右键项目->重新加载项目
 
 此时，打开项目，你可以看到你的项目发生了如下变化
-![project-change](/c#/image1.png)
+![project-change](https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g51tku4btqj30l309h74p.jpg)
 此时，项目已经是一个40、46共存的项目了
 
 ## 剩余问题
