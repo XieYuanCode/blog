@@ -6,7 +6,7 @@
 
 ## 前言
 
-   作为初学`electron`的同学，[官方文档](https://electronjs.org/)就是最好的文档，此文章只会写一些我在学习的时候遇到的问题以及理解。
+   作为初学`electron`的同学，[官方文档](https://electronjs.org/)就是最好的文档
     
 ---
 
