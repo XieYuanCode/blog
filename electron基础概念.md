@@ -1,5 +1,5 @@
 
-# Electron基础概念
+# 1.0 Electron 基础概念
 
 > So begins a new age of knowledge
 
@@ -50,6 +50,6 @@
 
 被主进程使用`BrowserWindow`实例创建，每个`Electron`中的web页面运行在它自己的渲染进程中。
 
-渲染进程无法调用`Electron`GUI相关的API， 如[Dialog](https://electronjs.org/docs/api/dialog)、[Menu](https://electronjs.org/docs/api/menu)等，因为在 web 页面里操作原生的 GUI 资源是非常危险的， 所以当你希望在web页面调用GUI接口，必须与主进程进行通讯，参考[此文]()
+渲染进程无法调用`Electron`GUI相关的API， 如[Dialog](https://electronjs.org/docs/api/dialog)、[Menu](https://electronjs.org/docs/api/menu)等，因为在 web 页面里操作原生的 GUI 资源是非常危险的， 所以当你希望在web页面调用GUI接口，必须与主进程进行通讯，参考[此文](https://gitpress.io/@amber/electron%E8%BF%9B%E7%A8%8B%E9%80%9A%E8%AE%AF)
 
 **<font color=yellow>渲染进程只关心自己渲染的web页面</font>**
