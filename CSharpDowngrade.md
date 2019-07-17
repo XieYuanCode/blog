@@ -2,6 +2,7 @@
 
 > So begins a new age of knowledge
 
+
 ---
 
 ## 前言
