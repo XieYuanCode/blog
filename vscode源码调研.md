@@ -4,13 +4,14 @@
 > So begins a new age of knowledge
 
 
+[TOC]
+
 ---
+## 前言
 
   Tip: 本文假设你已经有`electron`基础知识，如果你从头开始学习，请查看我的另一篇介绍`electron`基础的文章: [electron基础学习](https://gitpress.io/@amber/electron%E5%9F%BA%E7%A1%80)
     
 ---
-
-## 前言
 
   目的是做一个方便公司业务开发、支持公司特定DSL可视化编辑等需求，决定基于vscode(版本:1.3.3)(下文统一简称**vsc**)进行修改，下文是vscode源码部分的解读
 
