@@ -5,8 +5,6 @@
 > So begins a new age of knowledge
 
 
-[TOC]
-
 ---
 
 ## 前言
@@ -26,7 +24,7 @@
 * NodeJs
 
 在[NodeJs官网](https://nodejs.org/en/download/)下载最新稳定版NodeJs并安装，如下命令可以测是否安装成功
-```sh
+```Shell
 # 下面这行的命令会打印出NodeJs的版本信息
 node -v
 
@@ -69,7 +67,7 @@ npm -v
 
 首先，安装NodeJS，对于不同linux分支，安装步骤会有所差异。 假如你使用系统自带的包管理器，比如： apt 或者 pacman，请使用[Node.js 官方Linux安装指引](https://nodejs.org/en/download/package-manager/)。
 如下命令可以测是否安装成功
-```sh
+```Shell
 # 下面这行的命令会打印出NodeJs的版本信息
 node -v
 
@@ -89,7 +87,7 @@ npm -v
 
 在你的应用(此处默认应用名为`electron-quick-start`)目录下运行如下命令，如图，会生成一个package.json文件
 
-```sh
+```Shell
 npm init
 ```
 
@@ -141,14 +139,14 @@ electron-qucik-start/
 
 在electron-qucik-start目录下运行如下脚本：
 
-```sh
+```Shell
 # 使用npm作为包管理器
 npm install --save-dev electron
 ```
 
 or
 
-```sh
+```Shell
 # 使用yarn作为包管理器
 yarn add electron
 ```

@@ -4,8 +4,6 @@
 > So begins a new age of knowledge
 
 
-[TOC]
-
 ---
 ## 前言
 
