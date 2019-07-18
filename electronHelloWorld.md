@@ -153,3 +153,7 @@ yarn add electron
 
 > [!Tip]
 > 除此之外，也有其他安装 Electron 的途径。 请咨询[安装指南](https://electronjs.org/docs/tutorial/installation)来了解如何用代理、镜像和自定义缓存
+
+
+### 开发主进程脚本
+
