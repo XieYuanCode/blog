@@ -7,7 +7,7 @@
 ---
 ## 前言
 
-  Tip: 本文假设你已经有`electron`基础知识，如果你从头开始学习，请查看我的另一篇介绍`electron`基础的文章: [electron基础学习](https://gitpress.io/@amber/electron%E5%9F%BA%E7%A1%80)
+  Tip: 本文假设你已经有`electron`基础知识，如果你从头开始学习，请查看我的另一篇介绍`electron`基础的文章: [electron基础学习](https://gitpress.io/@amber/electron%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5)
     
 ---
 
