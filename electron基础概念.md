@@ -57,5 +57,7 @@
 > [!Tip]
 > 渲染进程只关心自己渲染的web页面
 
->[!Info]
->NEXT TOPIC => [打造你的第一个electron应用：HelloWorld](https://gitpress.io/@amber/electronHelloWorld)
+
+---
+
+**NEXT TOPIC** => [打造你的第一个electron应用：HelloWorld](https://gitpress.io/@amber/electronHelloWorld)
