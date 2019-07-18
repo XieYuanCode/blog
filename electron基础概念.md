@@ -57,7 +57,45 @@
 > [!Tip]
 > 渲染进程只关心自己渲染的web页面
 
+#### 调用electron的API
+Electron官方提供了许多api帮助我们开发桌面应用程序，每个api在文档中都会声明可以在什么进程中调用，如`BrowserWindow`只能在主进程中使用
 
+```javascript
+// 这样写在主进程会有用，但是在渲染进程中会提示'未定义'
+const { BrowserWindow } = require('electron')
+
+const win = new BrowserWindow()
+```
+
+因为进程之间的通信是被允许的, 所以渲染进程可以调用主进程来执行任务。 Electron通过remote模块暴露一些通常只能在主进程中获取到的API。 为了在渲染进程中创建一个BrowserWindow的实例，我们通常使用remote模块为中间件：
+
+```javascript
+//这样写在渲染进程中时行得通的，但是在主进程中是'未定义'
+const { remote } = require('electron')
+const { BrowserWindow } = remote
+
+const win = new BrowserWindow()
+```
+
+
+#### 调用nodejs的API
+
+由于electron本质是一个nodejs应用，所有nodejs所有api在主进程和渲染进程都是可以调用的
+
+```javascript
+const fs = require("fs")
+
+const fileBuffer = fs.readFileSync("main.js")
+
+console.log(fileBuffer)
+```
+
+> [!IMPORTANT]
+> 原生Node.js模块 (即指，需要编译源码过后才能被使用的模块) 需要在编译后才能和Electron一起使用,绝大多数的Node.js模块都不是原生的， 只有大概400~650个模块是原生的。 当然了，如果你的确需要原生模块，可以在这里查询[如何重新为Electron编译原生模块](https://electronjs.org/docs/tutorial/using-native-node-modules)(很简单)。
+
+
+> [!IMPORTANT]
+> 正如您可能已经猜到的那样，如果您尝试加载远程内容， 这会带来重要的安全隐患。 您可以在electron的 [安全文档](https://electronjs.org/docs/tutorial/security) 中找到更多有关加载远程内容的信息和指南。
 ---
 
 **NEXT TOPIC** => [打造你的第一个electron应用：HelloWorld](https://gitpress.io/@amber/electronHelloWorld)
