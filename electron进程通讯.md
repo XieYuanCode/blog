@@ -171,7 +171,7 @@ function openNewWindowFromRendererProcess() {
 
 **LAST TOPIC** => [打造你的第一个electron应用：HelloWorld](https://gitpress.io/@amber/electronHelloWorld)
 
-**NEXT TOPIC** => [Electron 调试](https://gitpress.io/@amber/electron%E8%BF%9B%E7%A8%8B%E9%80%9A%E8%AE%AF)
+**NEXT TOPIC** => [Electron 调试](https://gitpress.io/@amber/electron%E8%B0%83%E8%AF%95)
 
 
 
