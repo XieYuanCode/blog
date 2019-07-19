@@ -12,6 +12,11 @@
 
 ---
 
+> [!NOTE]
+> 本文的所有代码示例，都储存在[github](https://github.com/XieYuanCode/electron-demo/tree/master/communication)，你可以clone并运行，尝试做出你自己的修改
+
+---
+
 > [!Tip]
 > 为了方便编辑渲染进程，我们新增[index.html](https://github.com/XieYuanCode/electron-demo/blob/master/communication/index.html)文件，并修改如下代码
 
