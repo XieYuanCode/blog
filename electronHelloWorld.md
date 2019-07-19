@@ -11,6 +11,8 @@
 
    作为初学`Electron`的同学，[官方文档](https://Electronjs.org/)就是最好的文档
 
+---
+
 > [!NOTE]
 > 本文的所有代码示例，都储存在[github](https://github.com/XieYuanCode/electron-demo/tree/master/electron-qucik-start)，你可以clone并运行，尝试做出你自己的修改
     
