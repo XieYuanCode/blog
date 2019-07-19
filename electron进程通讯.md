@@ -27,13 +27,6 @@ win.loadURL('https://gitpress.io/@amber/electronHelloWorld')
 // 修改之后的代码
 win.loadFile('index.html')
 ```
-```javascript
-//这样写在渲染进程中时行得通的，但是在主进程中是'未定义'
-const { remote } = require('electron')
-const { BrowserWindow } = remote
-
-const win = new BrowserWindow()
-```
     
 ---
 
