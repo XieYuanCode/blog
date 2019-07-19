@@ -16,7 +16,7 @@
 ---
 
 > [!Tip]
-> 为了方便编辑渲染进程，我们新增`index.html`文件，并修改如下代码
+> 为了方便编辑渲染进程，我们新增[index.html](https://github.com/XieYuanCode/electron-demo/blob/master/communication/index.html)文件，并修改如下代码
 
 ```javascript
 // 修改之前的代码
