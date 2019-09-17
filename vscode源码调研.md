@@ -11,7 +11,7 @@
     
 ---
 
-  目的是做一个方便公司业务开发、支持公司特定DSL可视化编辑等需求，决定基于vscode(版本:1.3.3)(下文统一简称**vsc**)进行修改，下文是vscode源码部分的解读
+  目的是做一个方便公司业务开发、支持公司特定DSL可视化编辑等需求，决定基于vscode(版本:1.3.3)进行修改，下文是vscode源码部分的解读
 
 ---
 
@@ -22,7 +22,7 @@
 
 ---
 
-### vsc源码目录结构
+### vscode源码目录结构
 
 ``` project
 // 备注 "+"代表为了实现需求，需要更改或者新增的目录或者文件
@@ -104,3 +104,103 @@
 
   └ test 测试工程
 ```
+
+
+### vscode整体架构
+
+  >vscode通过依赖注入的方式，将大量的service通过构造函数入参声明的方式注入到类中
+
+  1. 依赖注入
+
+  vscode中有许多的service，如FileService、EditorService、ConfigurationService等，以提供不同职责的API供其他系统调用
+
+  vscode使用依赖注入的方式，将Service的声明与实现解耦。
+
+  有关依赖注入(DI)以及相关的一些概念，如控制反转(IOC)等，可以看[这篇文章](https://www.zhihu.com/question/32108444/answer/309208647)。
+
+  2. 服务调用
+
+  在vscode中，假如我们创建一个自己的Explorer右键菜单项，并执行一些的逻辑，需要调用vscode中的某些Service提供的功能，伪代码如下
+
+  ```typescript
+  // 首先需要在FileExplorer创建一个右键菜单，并且绑定一个command
+  export const MY_COMMAND_ID = "my_command" 
+
+  // 所有可视文字的声明需要国际化处理
+  export const MY_COMMAND_TITLE = nls.localize("my_command_title")
+
+  MenuRegistry.appendMenuItem(MenuId.ExplorerContext, {
+    group: "MyGroup",
+    command: {
+      id: MY_COMMAND_ID,
+      title: MY_COMMAND_TITLE
+    },
+    order: 3
+  })
+
+  // 声明对应的command
+
+  CommandsRegistry.registerCommand({
+    id: MY_COMMAND_ID,
+    // 这里的accessor是一个存取器，可以拿到当前的所有的Service
+    handler:(accessor, resource: URI) =>{
+      // 主题相关的Service
+      const themeService = accessor.get(IWorkbenchThemeService)
+      // 布局相关的Service
+      const layoutService = accessor.get(IWorkbenchLayoutService)
+
+      // 之后就是业务处理逻辑，例如
+      const myHandler = new MyHandler(themeService, layoutService)
+    }
+  })
+
+  // 扩展核心代码
+  export class MyHandler {
+    constructor(
+      @IWorkbenchThemeService private readonly themeService: IWorkbenchThemeService,
+      @IWorkbenchLayoutService private readonly layoutService: IWorkbenchLayoutService,
+    ) {
+      //这里就可以拿到依赖注入进来的服务
+      console.log(this.themeService)
+      console.log(this.layoutService)
+    }
+  }
+  ```
+
+  3. 自定义服务声明
+
+  如果vscode本身提供的服务不满足我们的需求，我们想要增加自己的服务，应该怎么增加呢，本文以增加一个支持弹窗的服务为示例
+
+  ```typescript
+  // 在src/vs/workbench/service下新建CustomDialog目录
+
+  // 1.声明接口
+
+  export interface ICustomDialogService {
+	_serviceBrand: ServiceIdentifier<any>;
+
+	show(dialogContent: DialogContent, renderOptions?: CustomDialogRenderOptions): Promise<any>;
+
+	close(args: any): void;
+
+	getDialogContext(): DialogContext;
+  }
+
+  export const ICustomDialogService = createDecorator<ICustomDialogService>(CUSTOM_DIALOG_SERVICE_ID)
+
+  // 2. 实现接口
+
+  export class HTMLDialogService implements ICustomDialogService {
+    // 实现逻辑
+  }
+
+  // 初始化服务
+  // 在src/vs/workbench/electron-browser/main.ts文件中，加入我们的自定义的服务
+
+  class CodeRendererMain extends Disposable {
+    private initServices() {
+      // 在代码段中加入我们的的自定义服务
+      serviceCollection.set(ICustomDialogService, new SyncDescriptor(HTMLDialogService));
+    }
+  }
+  ```
